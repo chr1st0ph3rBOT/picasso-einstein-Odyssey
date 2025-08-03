@@ -1,7 +1,7 @@
 import torch
 from torch import nn
 from torch.utils.data import DataLoader
-from transformers import BertModel, BertForCausalLM, BertTokenizer, DataCollatorWithPadding
+from transformers import BertModel, BertLMHeadModel, BertTokenizer, DataCollatorWithPadding
 from datasets import load_dataset
 import warnings
 
@@ -14,7 +14,7 @@ class ArtistX(nn.Module):
         super().__init__()
         self.tokenizer = BertTokenizer.from_pretrained(model_name)
         self.encoder = BertModel.from_pretrained(model_name)
-        self.decoder = BertForCausalLM.from_pretrained(model_name)
+        self.decoder = BertLMHeadModel.from_pretrained(model_name)
 
     def forward(self, input_ids, attention_mask):
         encoder_outputs = self.encoder(input_ids=input_ids, attention_mask=attention_mask)
