@@ -19,11 +19,11 @@ class ArtistX(nn.Module):
         super().__init__() # nn.Module의 초기화 함수를 먼저 호출
         
         # 텍스트를 토큰 ID로, 토큰 ID를 텍스트로 변환하는 토크나이저
-        self.tokenizer = BertTokenizer.from_pretrained(model_name)
+        self.tokenizer = BertTokenizer.from_pretrained(model_name, local_files_only=True)
         # 텍스트의 의미를 추출하는 인코더 부분 (BERT의 기본 모델)
-        self.encoder = BertModel.from_pretrained(model_name)
+        self.encoder = BertModel.from_pretrained(model_name, local_files_only=True)
         # 의미로부터 다시 텍스트를 생성하는 디코더 부분 (BERT 생성 모델)
-        self.decoder = BertLMHeadModel.from_pretrained(model_name, is_decoder=True)
+        self.decoder = BertLMHeadModel.from_pretrained(model_name, is_decoder=True, local_files_only=True)
 
     # 모델에 데이터가 입력되었을 때, 실제로 연산이 일어나는 함수
     def forward(self, input_ids, attention_mask):
