@@ -9,4 +9,5 @@ https://drive.google.com/drive/folders/1p2EyQxCJMCiGHDhB0LjuIHfLjvf5jvvE?usp=sha
 model_data_.pth
 
 한글 자모 합치는 함수는 Gemini의 도움을 받았습니다.
+
 Tkinter의 GUI부분은 Gemini의 도움을 받았습니다.
